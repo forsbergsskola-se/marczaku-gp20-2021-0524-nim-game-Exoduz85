@@ -24,8 +24,15 @@ int main()
         cout << "How many sticks would you like to take? (1-3)" << endl;
         string input = "";
         cin >> input;
-        picketSticks = stoi(input);
-
+        try
+        {
+            picketSticks = stoi(input);
+        }
+        catch (const std::exception&)
+        {
+            cout << "You must input a value between 1 and 3!" << endl;
+        }
+        
         sticks -= picketSticks;
         
         cout << "You took " << picketSticks << " sticks from the stack!" << endl << "Now " << sticks << " sticks remains in the stack!" << endl;
