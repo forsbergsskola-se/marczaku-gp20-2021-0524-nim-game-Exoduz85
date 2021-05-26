@@ -1,14 +1,24 @@
 #include <iostream>
-#include "Player.h";
+#include "Player.h"
+#include "AI.h"
 using namespace std;
 
 Player player;
+AI ai;
 int sticks = 24;
 string sticksString = "|";
-int picketSticks = 0;
+int pickedSticks = 0;
 
 int main()
 {
+
+    for (int i = 0; i < 10; i++)
+    {
+        cout << ai.makeMove() << endl;
+        
+    } 
+    return 0;
+
     cout << "Hi and welcome to the game of Nim!\nPlease write your name.\n";
     string str = "";
     cin >> str;
@@ -26,16 +36,16 @@ int main()
         cin >> input;
         try
         {
-            picketSticks = stoi(input);
+            pickedSticks = stoi(input);
         }
         catch (const std::exception&)
         {
             cout << "You must input a value between 1 and 3!" << endl;
         }
         
-        sticks -= picketSticks;
+        sticks -= pickedSticks;
         
-        cout << "You took " << picketSticks << " sticks from the stack!" << endl << "Now " << sticks << " sticks remains in the stack!" << endl;
+        cout << "You took " << pickedSticks << " sticks from the stack!" << endl << "Now " << sticks << " sticks remains in the stack!" << endl;
     }
     return 0;
 }
