@@ -16,6 +16,12 @@ bool twoPlayers = false;
 bool playerTwoTurn = false;
 bool aiTurn = false;
 
+
+// TODO, MAJOR REFACTORING TO CLEAN UP AND STRUCTURE CODE...
+// TODO, MOVE GAME MODES INTO SEPARATE FILES...
+// TODO, BREAK APART AND CREATE METHODS
+
+
 int main(){
 	cout << "Hi and welcome to the game of Nim!\nDo you want to play against an AI (1) or another player (2)?\n";
 	while(!validInput){
