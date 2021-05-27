@@ -3,7 +3,9 @@
 #include "ExtensionMethods.h"
 using namespace std;
 
-vector<vector<char>> board = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+const int x = 3;
+const int y = 3;
+char board[x][y];
 
 string playerX = "";
 string playerO = "";
@@ -98,6 +100,7 @@ void playerOMove(){
 
 int main()
 {
+	memset(board, ' ', x * y);
     cout << "Welcome to tic tac toe!\nPlease input a name for player X: ";
     cin >> playerX;
     cout << "\nPlease input a name for player O: ";
@@ -133,4 +136,3 @@ int main()
 	}
 	return 0;
 }
-
