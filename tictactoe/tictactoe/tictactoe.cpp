@@ -9,6 +9,7 @@ const int y = 3;
 char board[x][y];
 
 reMarcableAi marc;
+
 string playerX = "";
 string playerO = "";
 string column = "";
@@ -16,6 +17,7 @@ string row = "";
 int c = 0;
 int r = 0;
 int gameStatus = 3;
+bool twoPlayers = false;
 
 void printBoard(){
     cout << "\n\n\t" << board[0][2] << '|' << board[1][2] << '|' << board[2][2] <<  endl;
@@ -99,6 +101,10 @@ void playerOMove(){
 	}
 	board[c][r] = 'O';
 }
+void aiMove(){
+	vector<int> getPos = marc.getPosition(board);
+	board[getPos[0]][getPos[1]] = 'O';
+}
 bool continuePlaying(){
 	if(checkBoard() == 2){
 		cout << "Player O won the game.\nCongratulations!!!\n\n";
@@ -114,18 +120,14 @@ bool continuePlaying(){
 	}
 return true;
 }
-
-int main()
-{
-	memset(board, ' ', x * y);
-    cout << "Welcome to tic tac toe!\nPlease input a name for player X: ";
-    cin >> playerX;
-    cout << "\nPlease input a name for player O: ";
-    cin >> playerO;
-    cout << "\nLet the game begin :)\n";
+void twoPlayerGame(){
+	cout << "Please input a name for player X : ";
+	cin >> playerX;
+	cout << "\nPlease input a name for player O: ";
+	cin >> playerO;
+	cout << "\nLet the game begin :)\n";
 	printBoard();
-	cout << "Please select a column and row to place your marker (e.g Column: 2, Row: 2 for upper right corner)\n";
-	while(true)	{
+	while(true){
 		cout << playerX << "'s turn.\n";
 		playerXMove();
 		printBoard();
@@ -135,5 +137,43 @@ int main()
 		printBoard();
 		if(!continuePlaying()) break;
 	}
+}
+void vsAiGame(){
+	cout << "Please input your name: ";
+	cin >> playerX;
+	cout << "\nLet the game begin :)\n";
+	printBoard();
+	while(true){
+		cout << playerX << "'s turn.\n";
+		playerXMove();
+		printBoard();
+		if(!continuePlaying()) break;
+		cout << "Ai's turn.\n";
+		aiMove();
+		printBoard();
+		if(!continuePlaying()) break;
+	}
+}
+
+int main()
+{
+	bool validInput = false;
+	string userInput = "0";
+	memset(board, ' ', x * y);
+
+	while(!validInput){
+		cout << "Welcome to tic tac toe!\nDo you wish to play against (1) other player or (2) an Ai?\n";
+		cin >> userInput;
+		if(!validateInput(userInput, "1", 1, 2)){
+			cout << "Not a valid input!\n";
+			continue;
+		}
+		break;
+	}
+
+	int i = stoi(userInput);
+	cout << "Great choice :D\n";
+	if(i == 1) twoPlayerGame();
+	if(i == 2) vsAiGame();
 	return 0;
 }
