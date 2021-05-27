@@ -1,12 +1,14 @@
 #include <iostream>
 #include <vector>
 #include "ExtensionMethods.h"
+#include "reMarcableAi.h"
 using namespace std;
 
 const int x = 3;
 const int y = 3;
 char board[x][y];
 
+reMarcableAi marc;
 string playerX = "";
 string playerO = "";
 string column = "";

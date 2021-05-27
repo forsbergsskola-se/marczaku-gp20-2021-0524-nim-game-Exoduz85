@@ -23,5 +23,8 @@
     <ClInclude Include="ExtensionMethods.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="reMarcableAi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
