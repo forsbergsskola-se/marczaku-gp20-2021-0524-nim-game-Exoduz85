@@ -97,6 +97,21 @@ void playerOMove(){
 	}
 	board[c][r] = 'O';
 }
+bool continuePlaying(){
+	if(checkBoard() == 2){
+		cout << "Player O won the game.\nCongratulations!!!\n\n";
+		return false;
+	}
+	if(checkBoard() == 1){
+		cout << "Player X won the game.\nCongratulations!!!\n\n";
+		return false;
+	}
+	if(checkBoard() == 0){
+		cout << "Shoot!\nIt's a tie.\n\n";
+		return false;
+	}
+return true;
+}
 
 int main()
 {
@@ -109,30 +124,14 @@ int main()
 	printBoard();
 	cout << "Please select a column and row to place your marker (e.g Column: 2, Row: 2 for upper right corner)\n";
 	while(true)	{
-
-		// TODO, make checks after each players turn if the board has been filled, i.e we get another result than 3 from checkBoard()!
-
 		cout << playerX << "'s turn.\n";
 		playerXMove();
 		printBoard();
-		gameStatus = checkBoard();
+		if(!continuePlaying()) break;
 		cout << playerO << "'s turn.\n";
 		playerOMove();
 		printBoard();
-		gameStatus = checkBoard();
-		if(gameStatus == 3) continue;
-		if(gameStatus == 2){
-			cout << "Player O won the game.\nCongratulations!!!\n\n";
-			break;
-		}
-		if(gameStatus == 1){
-			cout << "Player X won the game.\nCongratulations!!!\n\n";
-			break;
-		}
-		if(gameStatus == 0){
-			cout << "Shoot!\nIt's a tie.\n\n";
-			break;
-		}
+		if(!continuePlaying()) break;
 	}
 	return 0;
 }
