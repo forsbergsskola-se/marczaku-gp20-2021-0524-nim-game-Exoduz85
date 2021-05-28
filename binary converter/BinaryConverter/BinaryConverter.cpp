@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int numberToConvert = 0;
-int response = 0;
+long long numberToConvert = 0;
+long long response = 0;
 int numberOfBits = 64;
 
-string convertToBinaryString(int a){
+string convertToBinaryString(long long a){
 	string asBinary = "";
 
 	for(int i = 0; i < numberOfBits; i++)
