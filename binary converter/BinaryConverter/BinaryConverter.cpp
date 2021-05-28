@@ -1,24 +1,39 @@
 #include <iostream>
-
 using namespace std;
 
 long long numberToConvert = 0;
 long long response = 0;
 int numberOfBits = 64;
 
-string convertToBinaryString(long long a){
-	string asBinary = "";
+// TODO Add the functionality of using the binary operators to get a binary representation 
+
+string convertToBinaryString(long long n){
+	string asBinary;
 
 	for(int i = 0; i < numberOfBits; i++)
 	{
-		if(a % 2 == 0) asBinary.append("0");
+		if(n % 2 == 0) asBinary.append("0");
 		else asBinary.append("1");
-		a = a / 2;
+		n = n / 2;
 	}
-	cout << asBinary << endl;
-	asBinary.append("b0");
 	string reversed = string(asBinary.rbegin(), asBinary.rend());
+	reversed.insert(0, "0b");
 	return reversed;
+}
+
+string convertWithBinaryOperator(long long n)
+{
+	string asBinary;
+
+	for(int i = numberOfBits - 1; i >= 0; i--){
+		long long k = n >> i;
+		if(k & 1)
+			asBinary.append("1");
+		else
+			asBinary.append("0");
+	}
+	asBinary.insert(0, "0b");
+	return asBinary;
 }
 
 int main()
@@ -29,7 +44,9 @@ int main()
 		cin >> numberToConvert;
 		cout << endl << "You input: " << numberToConvert << ".\n";
 		string binaryString = convertToBinaryString(numberToConvert);
-		cout << "That is: " << binaryString << " as binary representation." << endl;
+		string binaryStringWithOperator = convertWithBinaryOperator(numberToConvert);
+		cout << "Is: " << binaryString << " as binary representation with n % 2." << endl;
+		cout << "Is: " << binaryStringWithOperator << " as binary representation with >> operator" << endl;
 		cout << "Want to do another number? [1] yes, [2] no\n";
 		cin >> response;
 		if(response == 2) break;
