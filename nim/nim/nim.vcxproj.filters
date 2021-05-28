@@ -29,5 +29,11 @@
     <ClInclude Include="StringToIntChecker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TwoPlayerGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VsAiGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

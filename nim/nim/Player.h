@@ -4,19 +4,21 @@ using namespace std;
 
  class Player{
  private:
-	 string name = "";
+	 string name;
 	 int score = 0;
  public:
 	 void setName(string n){
 		 this->name = n;
 	 };
-	 string getName() {
+	 string getName() const
+	 {
 		 return this->name;
 	 };
 	 void setScore(int s) {
-		 this->score = s;
+		 this->score += s;
 	 };
-	 int getScore() {
+	 int getScore() const
+	 {
 		 return this->score;
 	 };
 };
