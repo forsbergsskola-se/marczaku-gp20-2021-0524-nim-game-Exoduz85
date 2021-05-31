@@ -5,8 +5,6 @@ long long numberToConvert = 0;
 long long response = 0;
 int numberOfBits = 64;
 
-// TODO Add the functionality of using the binary operators to get a binary representation 
-
 string convertToBinaryString(long long n){
 	string asBinary;
 
